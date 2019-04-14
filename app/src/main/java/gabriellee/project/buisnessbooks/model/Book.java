@@ -1,23 +1,39 @@
 package gabriellee.project.buisnessbooks.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "books")
 public class Book {
 
-    private int rank;
-
-    private String author;
-
+    @PrimaryKey
+    @NonNull
     private String title;
 
+    @ColumnInfo(name = "author")
+    private String author;
+
+    @ColumnInfo(name = "book_image")
     private String book_image;
 
+    @ColumnInfo(name = "publisher")
     private String publisher;
 
-    public Book(int rank, String author, String title, String book_image, String publisher) {
-        this.rank = rank;
-        this.author = author;
+    @ColumnInfo(name = "rank")
+    private int rank;
+
+    @ColumnInfo(name = "timestamp")
+    private int timestamp;
+
+    public Book(@NonNull String title, String author, String book_image, String publisher, int rank, int timestamp) {
         this.title = title;
+        this.author = author;
         this.book_image = book_image;
         this.publisher = publisher;
+        this.rank = rank;
+        this.timestamp = timestamp;
     }
 
     public Book() {
@@ -63,14 +79,23 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public int getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(int timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
-                "rank=" + rank +
+                "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", title='" + title + '\'' +
                 ", book_image='" + book_image + '\'' +
                 ", publisher='" + publisher + '\'' +
+                ", rank=" + rank +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }
