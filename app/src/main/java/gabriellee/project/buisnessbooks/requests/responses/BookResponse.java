@@ -1,4 +1,4 @@
-package gabriellee.project.buisnessbooks.requests;
+package gabriellee.project.buisnessbooks.requests.responses;
 
 import android.support.annotation.Nullable;
 

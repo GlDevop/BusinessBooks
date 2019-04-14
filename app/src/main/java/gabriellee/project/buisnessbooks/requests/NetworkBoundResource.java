@@ -2,7 +2,6 @@ package gabriellee.project.buisnessbooks.requests;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
@@ -10,8 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
 
+import gabriellee.project.buisnessbooks.requests.responses.ApiResponse;
 import gabriellee.project.buisnessbooks.util.AppExecutors;
-import okhttp3.Cache;
 
 // CacheObject: Type for the Resource data. (database cache)
 // RequestObject: Type for the API response. (network request)

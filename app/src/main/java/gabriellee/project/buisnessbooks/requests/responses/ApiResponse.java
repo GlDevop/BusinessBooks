@@ -1,6 +1,4 @@
-package gabriellee.project.buisnessbooks.requests;
-
-import android.util.Log;
+package gabriellee.project.buisnessbooks.requests.responses;
 
 import java.io.IOException;
 
@@ -13,6 +11,7 @@ public class ApiResponse<T> {
     }
 
     public ApiResponse<T> create(Response<T> response) {
+
         if(response.isSuccessful()) {
             T body = response.body();
 
