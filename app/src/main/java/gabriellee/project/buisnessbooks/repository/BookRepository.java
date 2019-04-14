@@ -16,6 +16,7 @@ import gabriellee.project.buisnessbooks.requests.responses.BookResponse;
 import gabriellee.project.buisnessbooks.requests.NetworkBoundResource;
 import gabriellee.project.buisnessbooks.requests.Resource;
 import gabriellee.project.buisnessbooks.requests.ServiceGenerator;
+import gabriellee.project.buisnessbooks.requests.responses.resultResponse;
 import gabriellee.project.buisnessbooks.util.AppExecutors;
 
 import static gabriellee.project.buisnessbooks.util.Constants.API_KEY;
@@ -38,16 +39,18 @@ public class BookRepository {
     }
 
     public LiveData<Resource<List<Book>>> searchBookApi() {
-        return new NetworkBoundResource<List<Book>, BookResponse>(AppExecutors.getInstance()) {
+        return new NetworkBoundResource<List<Book>, resultResponse>(AppExecutors.getInstance()) {
 
             @Override
-            protected void saveCallResult(@NonNull BookResponse item) {
-                if (item.getBooks() != null) {
+            protected void saveCallResult(@NonNull resultResponse item) {
+                if (item.getResults().getBooks() != null) {
 
-                    Book[] books = new Book[item.getBooks().size()];
+                    Book[] books = new Book[item.getResults().getBooks().size()];
 
                     int index = 0;
-                    for (long rowid: bookDao.insertBooks((Book[]) (item.getBooks().toArray(books)))){
+                    for (long rowid: bookDao.insertBooks((Book[]) (item.getResults().getBooks().toArray(books)))){
+                        Log.d(TAG, "saveCallResult: " + books[index].getTitle());
+                        Log.d(TAG, "saveCallResult: " + books[index].getRank());
                         if(rowid == -1) {
                             Log.d(TAG, "saveCallResult: CONFLICT... This book is already in the cahce");
                             // if the book already exists .... dont set timestamp
@@ -83,9 +86,10 @@ public class BookRepository {
 
             @NonNull
             @Override
-            protected LiveData<ApiResponse<BookResponse>> createCall() {
-                return ServiceGenerator.getBookApi()
-                        .getBook(API_KEY);
+            protected LiveData<ApiResponse<resultResponse>> createCall() {
+
+                return ServiceGenerator.getBookApi().getBook(API_KEY);
+
             }
         }.getAsLiveData();
     }

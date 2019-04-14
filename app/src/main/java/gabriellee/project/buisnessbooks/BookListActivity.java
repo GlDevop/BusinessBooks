@@ -48,8 +48,7 @@ public class BookListActivity extends BaseActivity {
             public void onChanged(@Nullable Resource<List<Book>> listResource) {
                 if (listResource != null) {
                     Log.d(TAG, "onChanged: status " + listResource.status);
-
-                  //  Testing.printBooks(listResource.data, "data");
+                    Log.d(TAG, "onChanged: data" + listResource.data);
 
                 }
             }

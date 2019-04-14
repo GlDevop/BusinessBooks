@@ -11,6 +11,8 @@ import gabriellee.project.buisnessbooks.model.Book;
 
 public class BookResponse {
 
+
+
     @SerializedName("books")
     @Expose()
     private List<Book> books;
