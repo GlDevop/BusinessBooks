@@ -41,9 +41,9 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 .into(((BookViewHolder)viewHolder).image);
 
         ((BookViewHolder)viewHolder).title.setText(mBooks.get(i).getTitle());
-        ((BookViewHolder)viewHolder).rank.setText(mBooks.get(i).getRank());
-        ((BookViewHolder)viewHolder).publisher.setText(mBooks.get(i).getPublisher());
-        ((BookViewHolder)viewHolder).author.setText(mBooks.get(i).getAuthor());
+        ((BookViewHolder)viewHolder).rank.setText(String.valueOf(mBooks.get(i).getRank()));
+        ((BookViewHolder)viewHolder).publisher.setText("Publisher: " + mBooks.get(i).getPublisher());
+        ((BookViewHolder)viewHolder).author.setText("Author: " + mBooks.get(i).getAuthor());
 
     }
 

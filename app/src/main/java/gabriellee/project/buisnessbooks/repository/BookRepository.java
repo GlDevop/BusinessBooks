@@ -52,9 +52,9 @@ public class BookRepository {
                         Log.d(TAG, "saveCallResult: " + books[index].getTitle());
                         Log.d(TAG, "saveCallResult: " + books[index].getRank());
                         if(rowid == -1) {
-                            Log.d(TAG, "saveCallResult: CONFLICT... This book is already in the cahce");
+                            Log.d(TAG, "saveCallResult: CONFLICT... This book is already in the cache");
                             // if the book already exists .... dont set timestamp
-                            //they will be erased
+                            // they will be erased
                             bookDao.updateBook(
                                     books[index].getTitle(),
                                     books[index].getAuthor(),
@@ -66,7 +66,6 @@ public class BookRepository {
                         }
                         index++;
                     }
-
                 }
                 else {
                     Log.e(TAG, "saveCallResult: No DATA READ IN");

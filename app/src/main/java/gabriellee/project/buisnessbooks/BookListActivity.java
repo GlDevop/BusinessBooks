@@ -49,6 +49,7 @@ public class BookListActivity extends BaseActivity {
                 if (listResource != null) {
                     Log.d(TAG, "onChanged: status " + listResource.status);
                     Log.d(TAG, "onChanged: data" + listResource.data);
+                    mAdapter.setBooks(listResource.data);
 
                 }
             }
@@ -60,6 +61,7 @@ public class BookListActivity extends BaseActivity {
         VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(30);
         mRecyclerView.addItemDecoration(itemDecorator);
         mRecyclerView.setAdapter(mAdapter);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 

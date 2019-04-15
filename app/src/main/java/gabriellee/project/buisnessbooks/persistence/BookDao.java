@@ -24,12 +24,12 @@ public interface BookDao {
     @Insert(onConflict = REPLACE)
     void insertRecipe(Book book);
 
-    @Query("UPDATE books SET author = :author, book_image = :book_image, publisher = :publisher, rank = :rank" +
-            " WHERE title = :title")
+    @Query("UPDATE books SET title = :title, author = :author, book_image = :book_image, publisher = :publisher, rank = :rank" +
+            " WHERE rank = :rank")
     void updateBook(String title, String author, String book_image, String publisher, int rank);
 
     //Select all books from database
-    @Query("SELECT * FROM books ORDER BY rank DESC")
+    @Query("SELECT * FROM books ORDER BY rank")
     LiveData<List<Book>> getBooks();
 
 
